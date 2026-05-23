@@ -1,21 +1,20 @@
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyC2FCJmKXCg5nmQj8t9n-vTAIG7tsIRJ9I",
+  authDomain: "aeterna-ar-restaurants.firebaseapp.com",
+  projectId: "aeterna-ar-restaurants",
+  storageBucket: "aeterna-ar-restaurants.firebasestorage.app",
+  messagingSenderId: "606685999055",
+  appId: "1:606685999055:web:0f9adf620ea9d565e8ecba",
+  measurementId: "G-B8STFGLH47"
 };
 
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
 
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
 
-export { app, auth, db, storage };
